@@ -43,7 +43,7 @@ extern struct resource resources[NR_RESOURCES];
 
 
 /**
- * Monotonically increasing ticks
+ * Monotonically increasing ticks. Do not modify it
  */
 extern unsigned int ticks;
 
@@ -196,7 +196,7 @@ pick_next:
 		list_del_init(&next->list);
 	}
 
-	/* Return the next process to run */
+	/* Return the process to run next */
 	return next;
 }
 
@@ -227,7 +227,7 @@ struct scheduler sjf_scheduler = {
 	.release = fcfs_release, /* Use the default FCFS release() */
 	.schedule = NULL,		 /* TODO: Assign sjf_schedule()
 								to this function pointer to activate
-								SJF in the system */
+								SJF in the simulation system */
 };
 
 
@@ -239,7 +239,9 @@ struct scheduler srtf_scheduler = {
 	.acquire = fcfs_acquire, /* Use the default FCFS acquire() */
 	.release = fcfs_release, /* Use the default FCFS release() */
 	/* You need to check the newly created processes to implement SRTF.
-	 * Use @forked() callback to mark newly created processes */
+	 * You may use @forked() callback to mark newly created processes
+	 */
+
 	/* Obviously, you should implement srtf_schedule() and attach it here */
 };
 
@@ -261,7 +263,7 @@ struct scheduler rr_scheduler = {
 struct scheduler prio_scheduler = {
 	.name = "Priority",
 	/**
-	 * Implement your own acqure/release function to make priority
+	 * Implement your own acqure/release function to make the priority
 	 * scheduler correct.
 	 */
 	/* Implement your own prio_schedule() and attach it here */
@@ -274,10 +276,8 @@ struct scheduler prio_scheduler = {
 struct scheduler pa_scheduler = {
 	.name = "Priority + aging",
 	/**
-	 * Implement your own acqure/release function to make priority
-	 * scheduler correct.
+	 * Ditto
 	 */
-	/* Implement your own prio_schedule() and attach it here */
 };
 
 
@@ -287,8 +287,7 @@ struct scheduler pa_scheduler = {
 struct scheduler pcp_scheduler = {
 	.name = "Priority + PCP Protocol",
 	/**
-	 * Implement your own acqure/release function too to make priority
-	 * scheduler correct.
+	 * Ditto
 	 */
 };
 

@@ -41,13 +41,12 @@ struct process {
 
 	struct list_head list;	/* list head for listing processes */
 
-	/**
-	 * You might need following(s) to implement dynamic priority features
-	 */
-	unsigned int prio_orig;	/* The original priority of the process */
+	unsigned int prio_orig;	/* The original priority of the process. You might
+							   need it to implement dynamic priority features
+							   such as aging, PIP and PCP. */
 
 
-	/** DO NOT ACCESS FOLLOWING VARIABLES **/
+	/** DO NOT ACCESS FOLLOWING VARIABLES. THESE ARE USED FOR SIMULATOR IMPLEMENTATION **/
 	unsigned int __starts_at;	/* When to fork the process */
 
 	struct list_head __resources_to_acquire;

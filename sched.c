@@ -329,7 +329,7 @@ static void __do_simulation(void)
 		prev = current;
 		current = sched->schedule();
 
-		/* If the system ran a process in the previous tick, */
+		/* If the system has run a process in the previous tick, */
 		if (prev) {
 			/* Update the process status */
 			if (prev->status == PROCESS_RUNNING) {
@@ -353,7 +353,6 @@ static void __do_simulation(void)
 			/* Idle temporarily */
 			fprintf(stderr, "%3d: idle\n", ticks);
 		} else {
-
 			/* Execute the current process */
 			current->status = PROCESS_RUNNING;
 
@@ -377,7 +376,7 @@ static void __do_simulation(void)
 				 */
 				__print_event(current->pid, "=");
 
-				/* Thus, it is not get aged nor unable to perform releases */
+				/* Thus, it does not get aged nor is unable to perform releases */
 			}
 		}
 
