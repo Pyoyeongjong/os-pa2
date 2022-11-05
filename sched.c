@@ -239,7 +239,9 @@ static int __fork_on_schedule()
 			nr_forked++;
 		}
 	}
+	
 	return nr_forked;
+
 }
 
 /**
